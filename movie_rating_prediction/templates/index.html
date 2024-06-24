@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 600px; margin: auto; }
+        input, label { display: block; margin: 10px 0; }
+        input[type="submit"] { background-color: #4CAF50; color: white; border: none; padding: 10px; }
+        .result { font-size: 1.5em; color: green; }
+        .error { font-size: 1.5em; color: red; }
+    </style>
+</head>
+<body>
+    <h1>Movie Rating Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="Year">Year:</label>
+        <input type="text" id="Year" name="Year" required>
+        <label for="Duration">Duration (minutes):</label>
+        <input type="text" id="Duration" name="Duration" required>
+        <label for="Votes">Votes:</label>
+        <input type="text" id="Votes" name="Votes" required>
+        <label for="Genre_mean_rating">Genre Mean Rating:</label>
+        <input type="text" id="Genre_mean_rating" name="Genre_mean_rating" required>
+        <label for="Director_mean_rating">Director Mean Rating:</label>
+        <input type="text" id="Director_mean_rating" name="Director_mean_rating" required>
+        <label for="Actor1_mean_rating">Actor 1 Mean Rating:</label>
+        <input type="text" id="Actor1_mean_rating" name="Actor1_mean_rating" required>
+        <label for="Actor2_mean_rating">Actor 2 Mean Rating:</label>
+        <input type="text" id="Actor2_mean_rating" name="Actor2_mean_rating" required>
+        <label for="Actor3_mean_rating">Actor 3 Mean Rating:</label>
+        <input type="text" id="Actor3_mean_rating" name="Actor3_mean_rating" required>
+        <input type="submit" value="Predict Rating">
+    </form>
+
+    {% if prediction %}
+    <p class="result">Predicted Rating: {{ prediction }}</p>
+    {% endif %}
+    
+    {% if error %}
+    <p class="error">Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
